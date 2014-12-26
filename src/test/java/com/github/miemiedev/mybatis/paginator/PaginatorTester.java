@@ -33,7 +33,7 @@ public class PaginatorTester extends SimulateBaseDao{
         //  order by age ASC, gender DESC, nlssort(name ,'NLS_SORT=SCHINESE_PINYIN_M') DESC, score DESC nulls last
 
 
-        List list = findByCity("BeiJing",pageBounds);
+        List list = findByBankcode("1100",pageBounds);
 
         //Get totalCount
         PageList pageList = (PageList)list;
@@ -44,14 +44,14 @@ public class PaginatorTester extends SimulateBaseDao{
         System.out.println(objectMapper.writeValueAsString(list));
     }
 
-    public List findByCity(String city, PageBounds pageBounds){
+    public List findByBankcode(String bankcode, PageBounds pageBounds){
         SqlSession session = null;
         try{
             session = getSqlSession();
             Map<String, Object> params = new HashMap<String, Object>();
-            params.put("city",city);
+            params.put("bankcode",bankcode);
 
-            return session.selectList("db.table.user.findByCity", params, pageBounds);
+            return session.selectList("db.table.tcim_mer_account.findByBankcode", params, pageBounds);
         }finally {
             session.close();
         }

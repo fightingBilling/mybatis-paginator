@@ -8,7 +8,7 @@
     </settings>
     <plugins>
         <plugin interceptor="com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">
-            <property name="dialectClass" value="com.github.miemiedev.mybatis.paginator.dialect.OracleDialect"/>
+            <property name="dialectClass" value="com.github.miemiedev.mybatis.paginator.dialect.MySQLDialect"/>
         </plugin>
     </plugins>
 
@@ -16,17 +16,24 @@
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED" >
+            	<!--  
                 <property name="driver" value="oracle.jdbc.OracleDriver"/>
                 <property name="url" value="jdbc:oracle:thin:@10.29.20.209:1521:orcl"/>
                 <property name="username" value="financial_product"/>
                 <property name="password" value="fpadmin"/>
+                <property name="poolMaximumActiveConnections" value="50"/>
+                -->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/smile"/>
+                <property name="username" value="root"/>
+                <property name="password" value="password"/>
                 <property name="poolMaximumActiveConnections" value="50"/>
             </dataSource>
         </environment>
     </environments>
 
     <mappers>
-        <mapper resource="User.mbts.xml"/>
+        <mapper resource="MerAccount.mapper.xml"/>
     </mappers>
 
 
