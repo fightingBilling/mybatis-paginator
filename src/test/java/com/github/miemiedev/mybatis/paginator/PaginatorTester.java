@@ -23,12 +23,12 @@ public class PaginatorTester extends SimulateBaseDao{
     public void controllerMethod() throws IOException {
         int page = 1;
         int pageSize = 20;
-        String sortString = "age.asc,gender.desc";
+        String sortString = "bank_code.asc,bank_acct_no.desc";
         PageBounds pageBounds = new PageBounds(page, pageSize , Order.formString(sortString));
         //Oracle sorting of chinese pinyin
-        pageBounds.getOrders().addAll(Order.formString("name.desc", "nlssort(? ,'NLS_SORT=SCHINESE_PINYIN_M')"));
+        /*pageBounds.getOrders().addAll(Order.formString("name.desc", "nlssort(? ,'NLS_SORT=SCHINESE_PINYIN_M')"));*/
         //Oracle sorting of nulls last
-        pageBounds.getOrders().add(Order.create("score", "desc", "? ? nulls last"));
+        /*pageBounds.getOrders().add(Order.create("score", "desc", "? ? nulls last"));*/
         //Order statement result:
         //  order by age ASC, gender DESC, nlssort(name ,'NLS_SORT=SCHINESE_PINYIN_M') DESC, score DESC nulls last
 
