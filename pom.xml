@@ -39,6 +39,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- log -->
+        <slf4j.version>1.7.2</slf4j.version>
+        <logback.version>1.0.6</logback.version>
+        <!-- data protocol -->
+        <jackson.version>2.2.3</jackson.version>
     </properties>
 
     <build>
@@ -74,29 +79,54 @@
             <artifactId>mybatis</artifactId>
             <version>3.1.0</version>
         </dependency>
-        <dependency>
+        <!--******** logback and slf4j ******** -->
+	    <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.2</version>
-        </dependency>
-        <dependency>
+            <version>${slf4j.version}</version>
+	    </dependency>
+	    <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+	    </dependency>
+	    <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+	    </dependency>
+	    <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.0.10</version>
-            <scope>provided</scope>
-        </dependency>
+            <version>${logback.version}</version>
+	    </dependency>
+	    <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-access</artifactId>
+            <version>${logback.version}</version>
+	    </dependency>
+	    <!-- data protocol -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.1.4</version>
-            <scope>provided</scope>
+            <version>${jackson.version}</version>
+            </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.1.4</version>
-            <scope>provided</scope>
+            <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
